@@ -1,0 +1,6 @@
+<div class="editor-toolbar-set">
+  <select class="select-font-size" (change)="onChangeFontSize($event.target.value)">
+    <option value="">Default</option>
+    <option *ngFor="let fontSize of fontSizes" value="{{ fontSize }}" [selected]="elementParams.fontSize === fontSize">{{ fontSize }}px</option>
+  </select>
+</div>

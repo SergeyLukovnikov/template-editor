@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+
+.editable {
+  border: 1px dashed;
+  padding: 3px;
+  margin-bottom: 3px;
+  outline: none;
+  cursor: pointer;
+}

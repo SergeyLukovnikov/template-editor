@@ -1,0 +1,20 @@
+<h1>Templates</h1>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Template name</th>
+      <th scope="col">Editing date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let template of $templates | async">
+      <th>{{ template.id }}</th>
+      <td>
+        <a [routerLink]="['template', 'edit', template.id]">{{ template.name }}</a>
+      </td>
+      <td>{{ template.modified | date:medium}}</td>
+    </tr>
+  </tbody>
+</table>

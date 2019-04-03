@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './app-root.component.html',
+  styleUrls: ['./app-root.component.scss'],
 })
 export class AppComponent {
   title = 'edit-template';
