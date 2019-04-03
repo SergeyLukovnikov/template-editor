@@ -1,4 +1,5 @@
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 export interface ElementParams {
   fontSize: string;
@@ -12,11 +13,18 @@ export const DEFAULT_ELEMENT_PARAMS: ElementParams = {
   fontSize: ''
 };
 
+@Injectable()
 export class EditorService {
 
   private activatedElement: HTMLElement;
   private $changeElement: Subject<null> = new Subject();
   private $elementParams: BehaviorSubject<ElementParams> = new BehaviorSubject(DEFAULT_ELEMENT_PARAMS);
+
+  private renderer: Renderer2;
+
+  constructor(rendererFactory: RendererFactory2) {
+    this.renderer = rendererFactory.createRenderer(null, null);
+  }
 
   public setFontSize(fontSize: string) {
     if (!this.activatedElement || !this.activatedElement.style) {
@@ -24,9 +32,10 @@ export class EditorService {
     }
 
     if (fontSize === '') {
-      this.activatedElement.removeAttribute('style');
+
+      this.renderer.removeAttribute(this.activatedElement, 'style');
     } else {
-      this.activatedElement.style.fontSize = `${fontSize}px`;
+      this.renderer.setStyle(this.activatedElement, 'fontSize', `${fontSize}px`);
     }
 
     this.$changeElement.next();

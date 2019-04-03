@@ -13,6 +13,8 @@ import { EditorService } from './editor.service';
   exports: [
     EditableDirective,
   ],
-  providers: [EditorService]
+  providers: [
+    EditorService,
+  ]
 })
 export class EditableModule {}
